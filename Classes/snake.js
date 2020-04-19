@@ -1,30 +1,24 @@
 'use strict'
 import gameGround from "./gameGround.js";
+
 export default class Snake{
-    constructor(canvas,x,y,speedX,speedY,color){
-        this.canvas = canvas;
+    constructor(x, y, speed, color){
         this.x = x;
         this.y = y;
-        this.speedX = speedX;
-        this.speedY = speedY;
+        this.speed_x = speed;
+        this.speed_y = 0;
         this.color = color;
     };
 
-    render(){ 
-        const ctx = this.canvas.canvas_id.getContext('2d');
+    render(ctx){ 
         ctx.fillStyle = this.color;
-        ctx.fillRect(this.x,this.y,this.x,this.y);
+        ctx.fillRect(this.x, this.y, 10, 10);
     };
 
-    updateSnake(){
-        const ctx = this.canvas.canvas_id.getContext('2d');
+    update(){
+        //const ctx = this.canvas.canvas_id.getContext('2d');
         //ctx.clearRect(0,0,this.x,this.y);
-        this.x += this.SpeedX * 5;
-        this.y += this.speedY * 5;
-        ctx.fillStyle = this.color;
-        ctx.fillRect(0,0,this.x,this.y);
-        console.log("updated");
+        this.x += this.speedX;
+        //ctx.fillStyle = this.color;
     };
-
-
 };
