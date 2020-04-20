@@ -19,11 +19,12 @@ function main() {
     setInterval(() => {
         grid_canvas.fillBackground();
         for(let sprite in sprites) {
+            sprites[sprite].eat(grid_canvas,sprites.Snake);
             sprites[sprite].update(grid_canvas);
             sprites[sprite].render(grid_canvas);
-            sprites[sprite].eat(grid_canvas,sprites.Snake);
+            
         }
-    }, 250);
+    }, 1000/10);
 }
 // alone
 main()

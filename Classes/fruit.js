@@ -23,7 +23,6 @@ export default class Fruit {
     create_food(ctx) {
         this.x = this.rand_range(0, ctx.width-1);
         this.y = this.rand_range(0, ctx.height-1);
-        console.log("x: " + this.x + "y: " + this.y);
     }
     rand_range(min, max) {
         // round up

@@ -1,4 +1,5 @@
 'use strict'
+
 export default class Snake {
     constructor(x, y, color){
         this.x = x;
@@ -34,6 +35,10 @@ export default class Snake {
         this.check_collision();   
     }
     // check collision
+    /*
+    *
+    * Må implementere at du taper.
+    * */
     check_collision(){
         if(this.tail.length <= 3){
             console.log("nope");
@@ -41,18 +46,17 @@ export default class Snake {
         } else{
             for(let i = 0; i < this.tail.length-1; i++){
             let collision = (this.tail[i].x == this.x && this.tail[i].y == this.y ) ? true : false;
-            if(collision){
-                console.log("not ok");
+                if(collision){
+                    console.log("not ok");
+                }
             }
         }
     }
-    }
-
     update(ctx){
         
         this.store_coordinates();
-        this.x += this.speed_x;
-        this.y += this.speed_y;
+        this.x = this.x + this.speed_x;
+        this.y = this.y + this.speed_y;
         if(this.x > ctx.width){
             this.x = 0;
         } 
