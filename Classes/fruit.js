@@ -18,9 +18,12 @@ export default class Fruit {
             ctx.fillRect(this.x, this.y, this.color);
         }
     }
+    // vi har en bug slik at maten kan komme utenfor brettet
+    // kan se ut som fiksen på høyde og bredde fiukset det ??
     create_food(ctx) {
-        this.x = this.rand_range(0, ctx.width);
-        this.y = this.rand_range(0, ctx.height);
+        this.x = this.rand_range(0, ctx.width-1);
+        this.y = this.rand_range(0, ctx.height-1);
+        console.log("x: " + this.x + "y: " + this.y);
     }
     rand_range(min, max) {
         // round up
@@ -34,11 +37,9 @@ export default class Fruit {
         let eating = (this.x == snake.x) && (this.y == snake.y) ? true : false;
         if(eating){
             snake.total_eaten_fruit++;
-            this.x = null;
-            this.y = null;
+            this.x = this.y = null;
             this.update(ctx);
             this.render(ctx);
-            //snake.total_eaten_fruit++;
         } 
     }
 }

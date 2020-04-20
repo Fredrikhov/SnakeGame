@@ -8,7 +8,7 @@ export default class Snake {
         this.color = color;
         this.direction = ""; // ??
         this.total_eaten_fruit = 0;
-        this.tail =[];
+        this.tail = [];
         this.snake_collision = false;
     };
 
@@ -102,7 +102,6 @@ export default class Snake {
     };
 
     eat(){
-        
         return;
     }
 

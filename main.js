@@ -4,7 +4,7 @@ import Snake from "./Classes/snake.js";
 import Fruit from "./Classes/fruit.js";
 
 function main() {  
-    const grid_canvas = new GridCanvas(document.getElementById('snakeGameGround'), 10, 'black');
+    const grid_canvas = new GridCanvas(document.getElementById('snakeGameGround'), 20, 'black');
     const sprites = {
         Snake : new Snake(10, 10, 'white'),
         Food : new Fruit('green'),
