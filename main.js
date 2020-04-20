@@ -1,22 +1,30 @@
 'use strict'
-import playGround from "./Classes/gameGround.js";
+import GridCanvas from "./Classes/GridCanvas.js";
 import Snake from "./Classes/snake.js";
+import Fruit from "./Classes/fruit.js";
 
-function main() {
+function main() {  
+    const grid_canvas = new GridCanvas(document.getElementById('snakeGameGround'), 10, 'black');
     const sprites = {
-        "snake" : new Snake(10, 10, 10, 'white'),
-        "playground" : new playGround(500,500,'black'),
+        Snake : new Snake(10, 10, 'white'),
+        Food : new Fruit('green'),
     }
+    window.addEventListener('keydown', function(event){
+        // remove 'Arrrow' from the key name.
+        let direction = event.key.slice(5);
+        sprites.Snake.update_direction(direction);
+    });
 
-    const canvas = document.getElementById('snakeGameGround');
-    const ctx = canvas.getContext('2d');
     // set interval - update/run a function every 250ms or 1/4 of a second
     setInterval(() => {
-        for(var sprite in sprites) {
-            sprites[sprite].render(ctx);
-            sprites[sprite].update();
+        grid_canvas.fillBackground();
+        for(let sprite in sprites) {
+            sprites[sprite].update(grid_canvas);
+            sprites[sprite].render(grid_canvas);
+            sprites[sprite].eat(grid_canvas,sprites.Snake);
         }
+ 
     }, 250);
 }
-
+// alone
 main()
