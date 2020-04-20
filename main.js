@@ -23,7 +23,6 @@ function main() {
             sprites[sprite].render(grid_canvas);
             sprites[sprite].eat(grid_canvas,sprites.Snake);
         }
- 
     }, 250);
 }
 // alone

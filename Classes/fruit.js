@@ -32,12 +32,13 @@ export default class Fruit {
     }
     eat(ctx,snake){
         let eating = (this.x == snake.x) && (this.y == snake.y) ? true : false;
-        if(eating === true){
+        if(eating){
+            snake.total_eaten_fruit++;
             this.x = null;
             this.y = null;
             this.update(ctx);
             this.render(ctx);
-            snake.total_eaten_fruit++;
+            //snake.total_eaten_fruit++;
         } 
     }
 }

@@ -9,6 +9,7 @@ export default class Snake {
         this.direction = ""; // ??
         this.total_eaten_fruit = 0;
         this.tail =[];
+        this.snake_collision = false;
     };
 
     render(ctx){
@@ -16,26 +17,35 @@ export default class Snake {
         for(let i = 0; i < this.tail.length; i++){
             ctx.fillRect(this.tail[i].x, this.tail[i].y, this.color);
         }
-        // 
         ctx.fillRect(this.x, this.y, this.color); 
     };
 
     store_coordinates(){
         // ikke forleng den med en om ingen mat er spist
         if(this.total_eaten_fruit <= 0){
+            //this.tail[this.total_eaten_fruit-1] = {x : this.x, y : this.y};
             return;
         } else{
             for(let i = 0; i < this.tail.length-1; i++){
             this.tail[i] = this.tail[i+1];
             } 
         } 
-        // set first element as head (if fruit_eaten === 0)
-        // else add elements
-        this.tail[this.total_eaten_fruit-1] = {x : this.x, y : this.y};   
+        this.tail[this.total_eaten_fruit-1] = {x : this.x, y : this.y};
+        this.check_collision();   
     }
-    // 
-    collision(){
-        
+    // check collision
+    check_collision(){
+        if(this.tail.length <= 3){
+            console.log("nope");
+            return;
+        } else{
+            for(let i = 0; i < this.tail.length-1; i++){
+            let collision = (this.tail[i].x == this.x && this.tail[i].y == this.y ) ? true : false;
+            if(collision){
+                console.log("not ok");
+            }
+        }
+    }
     }
 
     update(ctx){
